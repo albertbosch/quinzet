@@ -28,7 +28,7 @@
 
 ### Captura de pantalla
 
-![Quinzet, vista Mes amb files de quinzenes](screenshots/quinzet-mes.png)
+![Quinzet, vista Mes amb files de quinzenes](screenshots/quinzet-ca.png)
 
 ### Idioma
 
@@ -96,7 +96,7 @@ Aquest projecte està sota llicència [CC BY-NC 4.0](https://creativecommons.org
 
 ### Screenshot
 
-![Quinzet, Month view with rows of fortnights](screenshots/quinzet-mes.png)
+![Quinzet, Month view with rows of fortnights](screenshots/quinzet-en.png)
 
 ### Language
 
