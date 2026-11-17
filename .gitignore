@@ -1,0 +1,16 @@
+# Local / AI assistant files
+CLAUDE.md
+AGENTS.md
+.claude/
+*.local.json
+
+# Build output
+.build/
+build/
+*.dmg
+log
+
+# macOS / IDE
+.DS_Store
+.idea/
+.vscode/
