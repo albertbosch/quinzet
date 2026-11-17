@@ -36,6 +36,8 @@ mkdir -p "$OUT/$APP.app/Contents/MacOS" "$OUT/$APP.app/Contents/Resources"
 cp "$BIN" "$OUT/$APP.app/Contents/MacOS/$APP"
 cp Resources/Info.plist "$OUT/$APP.app/Contents/Info.plist"
 cp Resources/AppIcon.icns "$OUT/$APP.app/Contents/Resources/AppIcon.icns"
+# Traduccions (català i anglès)
+cp -R Resources/ca.lproj Resources/en.lproj "$OUT/$APP.app/Contents/Resources/"
 codesign --force --deep --sign - "$OUT/$APP.app"
 
 echo "▸ Creant $APP.dmg…"

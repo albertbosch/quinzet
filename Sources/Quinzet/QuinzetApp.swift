@@ -77,15 +77,22 @@ final class AppState: ObservableObject {
         switch mode {
         case .day:
             let c = Q.comps(cursor)
+            if Lang.isEnglish { return "\(c.d) \(Q.deMonth(c.m)) \(c.y)" }
             return "\(c.d) \(Q.deMonth(c.m)) de \(c.y)"
         case .fortnight:
             let s = Q.start(cursor), e = Q.add(13, to: s)
             let a = Q.comps(s), b = Q.comps(e)
+            if Lang.isEnglish {
+                if a.m == b.m { return "\(a.d) – \(b.d) \(Q.deMonth(b.m)) \(b.y)" }
+                if a.y == b.y { return "\(a.d) \(Q.deMonth(a.m)) – \(b.d) \(Q.deMonth(b.m)) \(b.y)" }
+                return "\(a.d) \(Q.deMonth(a.m)) \(a.y) – \(b.d) \(Q.deMonth(b.m)) \(b.y)"
+            }
             if a.m == b.m { return "\(a.d) – \(b.d) \(Q.deMonth(b.m)) de \(b.y)" }
             if a.y == b.y { return "\(a.d) \(Q.deMonth(a.m)) – \(b.d) \(Q.deMonth(b.m)) de \(b.y)" }
             return "\(a.d) \(Q.deMonth(a.m)) de \(a.y) – \(b.d) \(Q.deMonth(b.m)) de \(b.y)"
         case .month:
             let c = Q.comps(cursor)
+            if Lang.isEnglish { return "\(Q.monthsCap[c.m - 1]) \(c.y)" }
             return "\(Q.monthsCap[c.m - 1]) de \(c.y)"
         case .year:
             return "\(Q.comps(cursor).y)"

@@ -7,13 +7,13 @@ enum RepeatOption: Int, CaseIterable, Identifiable {
 
     var title: String {
         switch self {
-        case .none: return "Mai"
-        case .daily: return "Cada dia"
-        case .weekly: return "Cada setmana"
-        case .fortnightly: return "Cada quinzena"
-        case .monthly: return "Cada mes"
-        case .yearly: return "Cada any"
-        case .custom: return "Personalitzat"
+        case .none: return L("Mai")
+        case .daily: return L("Cada dia")
+        case .weekly: return L("Cada setmana")
+        case .fortnightly: return L("Cada quinzena")
+        case .monthly: return L("Cada mes")
+        case .yearly: return L("Cada any")
+        case .custom: return L("Personalitzat")
         }
     }
 
@@ -48,17 +48,17 @@ enum RepeatOption: Int, CaseIterable, Identifiable {
 
 enum AlarmOption {
     static let list: [(title: String, offset: TimeInterval)] = [
-        ("En el moment de l'esdeveniment", 0),
-        ("5 minuts abans", -300),
-        ("10 minuts abans", -600),
-        ("15 minuts abans", -900),
-        ("30 minuts abans", -1800),
-        ("1 hora abans", -3600),
-        ("2 hores abans", -7200),
-        ("1 dia abans", -86_400),
-        ("2 dies abans", -172_800),
-        ("El mateix dia a les 9:00", 32_400),
-        ("El dia abans a les 9:00", -54_000),
+        (L("En el moment de l'esdeveniment"), 0),
+        (L("5 minuts abans"), -300),
+        (L("10 minuts abans"), -600),
+        (L("15 minuts abans"), -900),
+        (L("30 minuts abans"), -1800),
+        (L("1 hora abans"), -3600),
+        (L("2 hores abans"), -7200),
+        (L("1 dia abans"), -86_400),
+        (L("2 dies abans"), -172_800),
+        (L("El mateix dia a les 9:00"), 32_400),
+        (L("El dia abans a les 9:00"), -54_000),
     ]
     /// -1 = cap, -2 = personalitzat (no es toca)
     static func index(_ alarms: [EKAlarm]?) -> Int {

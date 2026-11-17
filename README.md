@@ -6,7 +6,7 @@
 
 ## Català
 
-**Quinzet** és un calendari per a macOS amb vista **quinzenal**: 14 columnes, de *Dilluns 1* a *Diumenge 2*. Fa servir els **mateixos calendaris que l'app Calendari** (iCloud, Google, Exchange, subscripcions, aniversaris...), de manera que tot el que hi facis queda sincronitzat amb Calendari, l'iPhone, etc. La interfície és en català.
+**Quinzet** és un calendari per a macOS amb vista **quinzenal**: 14 columnes, de *Dilluns 1* a *Diumenge 2*. Fa servir els **mateixos calendaris que l'app Calendari** (iCloud, Google, Exchange, subscripcions, aniversaris...), de manera que tot el que hi facis queda sincronitzat amb Calendari, l'iPhone, etc. La interfície és **bilingüe: català i anglès**, segons l'idioma del sistema.
 
 ### Característiques
 
@@ -23,11 +23,16 @@
 - Nous calendaris amb color i compte a triar.
 - Configuració: primer dia de la quinzena, calendari per defecte per als esdeveniments nous i botó per restablir els valors per defecte.
 - Numeració de quinzenes (Q1, Q2...) a partir de la que conté l'1 de gener.
+- **Interfície en català i en anglès**, tant els menús i els diàlegs com els noms de dies i mesos i el format de les dates.
 - El primer dia de la quinzena és configurable a Configuració (`Cmd+,`); per defecte, el 12 d'octubre de 2026 és un *Dilluns 1*.
 
 ### Captura de pantalla
 
 ![Quinzet, vista Mes amb files de quinzenes](screenshots/quinzet-mes.png)
+
+### Idioma
+
+Quinzet s'obre en l'idioma del sistema: català si el teu Mac és en català, i anglès en qualsevol altre cas. Per canviar-lo només per a Quinzet, ves a Configuració del Sistema, General, Idioma i regió, Aplicacions, i afegeix-hi Quinzet amb l'idioma que vulguis. Cal tornar a obrir l'app.
 
 ### Requisits
 
@@ -56,7 +61,7 @@ L'app queda signada només de manera local (*ad hoc*) i no està notaritzada. Si
 
 ```
 Sources/Quinzet/   -> codi Swift (SwiftUI i EventKit)
-Resources/         -> Info.plist i icona
+Resources/         -> Info.plist, icona i traduccions (ca.lproj, en.lproj)
 Package.swift      -> definició del paquet
 build.sh           -> compila i crea Quinzet.app i Quinzet.dmg
 ```
@@ -69,7 +74,7 @@ Aquest projecte està sota llicència [CC BY-NC 4.0](https://creativecommons.org
 
 ## English
 
-**Quinzet** is a macOS calendar with a **fortnightly** view: 14 columns, from *Monday 1* to *Sunday 2*. It uses the **same calendars as the Calendar app** (iCloud, Google, Exchange, subscriptions, birthdays...), so everything you do stays in sync with Calendar, your iPhone, and so on. The interface is in Catalan.
+**Quinzet** is a macOS calendar with a **fortnightly** view: 14 columns, from *Monday 1* to *Sunday 2*. It uses the **same calendars as the Calendar app** (iCloud, Google, Exchange, subscriptions, birthdays...), so everything you do stays in sync with Calendar, your iPhone, and so on. The interface is **bilingual: Catalan and English**, following the system language.
 
 ### Features
 
@@ -86,11 +91,16 @@ Aquest projecte està sota llicència [CC BY-NC 4.0](https://creativecommons.org
 - New calendars with a colour and an account of your choice.
 - Settings: first day of the fortnight, default calendar for new events and a button to restore the defaults.
 - Fortnight numbering (Q1, Q2...) starting from the one that contains January 1st.
+- **Catalan and English interface**, covering menus and dialogs as well as day and month names and date formats.
 - The first day of the fortnight is configurable in Settings (`Cmd+,`); by default, October 12, 2026 is a *Monday 1*.
 
 ### Screenshot
 
 ![Quinzet, Month view with rows of fortnights](screenshots/quinzet-mes.png)
+
+### Language
+
+Quinzet opens in the system language: Catalan if your Mac is set to Catalan, and English otherwise. To change it for Quinzet only, go to System Settings, General, Language & Region, Applications, and add Quinzet with the language you want. Restart the app afterwards.
 
 ### Requirements
 
@@ -119,7 +129,7 @@ The app is only signed locally (*ad hoc*) and is not notarized. If macOS warns y
 
 ```
 Sources/Quinzet/   -> Swift code (SwiftUI and EventKit)
-Resources/         -> Info.plist and icon
+Resources/         -> Info.plist, icon and translations (ca.lproj, en.lproj)
 Package.swift      -> package definition
 build.sh           -> builds and creates Quinzet.app and Quinzet.dmg
 ```

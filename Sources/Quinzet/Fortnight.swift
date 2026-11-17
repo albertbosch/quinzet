@@ -7,10 +7,10 @@ enum ViewMode: String, CaseIterable, Identifiable {
     var id: String { rawValue }
     var title: String {
         switch self {
-        case .day: return "Dia"
-        case .fortnight: return "Quinzena"
-        case .month: return "Mes"
-        case .year: return "Any"
+        case .day: return L("Dia")
+        case .fortnight: return L("Quinzena")
+        case .month: return L("Mes")
+        case .year: return L("Any")
         }
     }
 }
@@ -20,15 +20,23 @@ enum ViewMode: String, CaseIterable, Identifiable {
 enum Q {
     static let cal: Calendar = {
         var c = Calendar(identifier: .gregorian)
-        c.locale = Locale(identifier: "ca_ES")
+        c.locale = Locale(identifier: Lang.isEnglish ? "en_GB" : "ca_ES")
         c.firstWeekday = 2
         return c
     }()
 
-    static let shortDays = ["Dl", "Dt", "Dc", "Dj", "Dv", "Ds", "Dg"]
-    static let longDays = ["Dilluns", "Dimarts", "Dimecres", "Dijous", "Divendres", "Dissabte", "Diumenge"]
-    static let months = ["gener", "febrer", "març", "abril", "maig", "juny", "juliol", "agost", "setembre", "octubre", "novembre", "desembre"]
-    static let monthsCap = ["Gener", "Febrer", "Març", "Abril", "Maig", "Juny", "Juliol", "Agost", "Setembre", "Octubre", "Novembre", "Desembre"]
+    static let shortDays = Lang.isEnglish
+        ? ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"]
+        : ["Dl", "Dt", "Dc", "Dj", "Dv", "Ds", "Dg"]
+    static let longDays = Lang.isEnglish
+        ? ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+        : ["Dilluns", "Dimarts", "Dimecres", "Dijous", "Divendres", "Dissabte", "Diumenge"]
+    static let monthsCap = Lang.isEnglish
+        ? ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+        : ["Gener", "Febrer", "Març", "Abril", "Maig", "Juny", "Juliol", "Agost", "Setembre", "Octubre", "Novembre", "Desembre"]
+    static let months = Lang.isEnglish
+        ? monthsCap
+        : ["gener", "febrer", "març", "abril", "maig", "juny", "juliol", "agost", "setembre", "octubre", "novembre", "desembre"]
 
     static let defaultAnchor: Date = cal.date(from: DateComponents(year: 2026, month: 10, day: 12))!
 
@@ -85,6 +93,7 @@ enum Q {
     static func monthName(_ d: Date) -> String { months[cal.component(.month, from: d) - 1] }
     static func deMonth(_ m: Int) -> String {
         let n = months[m - 1]
+        if Lang.isEnglish { return n }
         return (n.hasPrefix("a") || n.hasPrefix("o")) ? "d’\(n)" : "de \(n)"
     }
 
@@ -103,10 +112,10 @@ enum Q {
     }
 
     private static let timeFmt: DateFormatter = {
-        let f = DateFormatter(); f.locale = Locale(identifier: "ca_ES"); f.dateFormat = "HH:mm"; return f
+        let f = DateFormatter(); f.locale = Locale(identifier: Lang.isEnglish ? "en_GB" : "ca_ES"); f.dateFormat = "HH:mm"; return f
     }()
     private static let longFmt: DateFormatter = {
-        let f = DateFormatter(); f.locale = Locale(identifier: "ca_ES"); f.dateFormat = "d MMM yyyy"; return f
+        let f = DateFormatter(); f.locale = Locale(identifier: Lang.isEnglish ? "en_GB" : "ca_ES"); f.dateFormat = "d MMM yyyy"; return f
     }()
     static func time(_ d: Date) -> String { timeFmt.string(from: d) }
     static func dateString(_ d: Date) -> String { longFmt.string(from: d) }

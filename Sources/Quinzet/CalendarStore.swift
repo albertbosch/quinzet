@@ -75,7 +75,7 @@ final class CalendarStore: ObservableObject {
         var cals: [String: [EKCalendar]] = [:]
         for c in calendars {
             let sid = c.source?.sourceIdentifier ?? "-"
-            if cals[sid] == nil { order.append(sid); titles[sid] = c.source?.title ?? "Altres"; cals[sid] = [] }
+            if cals[sid] == nil { order.append(sid); titles[sid] = c.source?.title ?? L("Altres"); cals[sid] = [] }
             cals[sid]!.append(c)
         }
         return order.map { CalGroup(id: $0, title: titles[$0] ?? "", calendars: cals[$0] ?? []) }
@@ -107,7 +107,7 @@ final class CalendarStore: ObservableObject {
 
     func createCalendar(title: String, color: Color, sourceID: String?) {
         let c = EKCalendar(for: .event, eventStore: ek)
-        c.title = title.isEmpty ? "Sense títol" : title
+        c.title = title.isEmpty ? L("Sense títol") : title
         c.color = NSColor(color)
         c.source = writableSources.first { $0.sourceIdentifier == sourceID }
             ?? ek.defaultCalendarForNewEvents?.source
@@ -125,7 +125,7 @@ final class CalendarStore: ObservableObject {
         if s.hasPrefix("https://") { s = "webcal://" + s.dropFirst(8) }
         else if s.hasPrefix("http://") { s = "webcal://" + s.dropFirst(7) }
         else if !s.hasPrefix("webcal://") { s = "webcal://" + s }
-        if let url = URL(string: s) { NSWorkspace.shared.open(url) } else { lastError = "L'adreça no és vàlida." }
+        if let url = URL(string: s) { NSWorkspace.shared.open(url) } else { lastError = L("L'adreça no és vàlida.") }
     }
 
     // MARK: Esdeveniments
@@ -185,9 +185,9 @@ final class CalendarStore: ObservableObject {
 
     @discardableResult
     func newEvent(start: Date, end: Date, allDay: Bool) -> EKEvent? {
-        guard let cal = defaultCalendar else { lastError = "No hi ha cap calendari on es pugui escriure."; return nil }
+        guard let cal = defaultCalendar else { lastError = L("No hi ha cap calendari on es pugui escriure."); return nil }
         let ev = EKEvent(eventStore: ek)
-        ev.title = "Nou esdeveniment"
+        ev.title = L("Nou esdeveniment")
         ev.isAllDay = allDay
         ev.startDate = start
         ev.endDate = end
